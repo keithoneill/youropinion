@@ -1,53 +1,71 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import SearchInput from './components/search/SearchInput';
-import MainBtn from './components/buttons/MainBtn';
+import Article from './components/article/Article';
 
+
+
+function App() {
+const [articles, setArticles] = useState([]);
+
+useEffect(() => {
+  async function searchArticles() {
+    var url = 'http://newsapi.org/v2/everything?' +
+    'q=Apple&' +
+    'from=2020-09-06&' +
+    'sortBy=popularity&' +
+    'apiKey=d071bbbfe8e04f14bee177be536fde78';
+    const response = await fetch(url);
+    if(response.ok){
+        var req = new Request(url);
+        fetch(req)
+        // .then(function(response) {
+        //     console.log(response.json());
+        // })
+        .then(response => response.json())
+        // .then(data => {
+        //   console.log(data.articles)
+        // })
+        .then(response => response.articles.map(article => (
+            {
+                source: `${article.source.name}`,
+                author: `${article.author}`,
+                title: `${article.title}`,
+                description: `${article.description}`,
+                image: `${article.urlToImage}`,
+                date: `${article.publishedAt}`,
+                content: `${article.content}`,
+            }
+        )))
+        
+        .then(article => setArticles(article))
+        .catch (error => console.log(error))
+    }
+  }
+  searchArticles();
+}, []);
+
+let news = articles.map((articles, i) => {
+  if(articles === ''){
+    return "Loading..."
+  }
+  else{
+    return <Article key={i} source={articles.source} author={articles.author} title={articles.title} description={articles.description} image={articles.image} date={articles.date} content={articles.content} />
+  }
+})
 function searchNews(search){
-  return function(searchNewsArticle){
+  return function(searchNewsTitle){
     try {
-      return searchPostTitle.pTitle.toLowerCase().includes(search.toLowerCase())
+      return searchNewsTitle.pTitle.toLowerCase().includes(search.toLowerCase())
     } catch (error) {
       return !search
     }
   }
 }
-
-function App() {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-      async function fetchUsers() {
-          const response = await fetch('https://randomuser.me/api/');
-          if(response.ok){
-              fetch('https://randomuser.me/api/?results=20')
-              .then(response => response.json())
-              .then(response => response.results.map(user => (
-                  {
-                      name: `${user.name.first} ${user.name.last}`,
-                      picture: `${user.picture.medium}`
-                  }
-              )))
-              .then(user => setUsers(user))
-              .catch (error => console.log(error))
-          }
-      }
-      fetchUsers();
-  }, []);
-  
-      //console.log(users)
-      let myFriends = users.map((users, i) => {
-          if(users === ''){
-              return "Loading..."
-          }
-          else{
-              return <Friend key={i} name={users.name} photo={users.picture} />
-          }
-      })
   return (
     <div className="App">
-      <SearchInput placeholder="Search..."/>
-      <MainBtn btnText="Search" />
+      <SearchInput placeholder="Search News"/>
+      { news }
     </div>
   );
 }
