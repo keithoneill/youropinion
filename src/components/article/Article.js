@@ -9,11 +9,11 @@ const Article = props => {
             </header>
             <section style={styles.info}>
                 <img style={styles.photo} src={props.image} alt="Article" />
-                <p style={styles.p}><h3>{props.description}</h3></p>
-                <p style={styles.p}><h3>{props.content}</h3></p>
-                <p style={styles.p}><h3>{props.source}</h3></p>
-                <p style={styles.p}><h3>{props.author}</h3></p>
-                <p style={styles.p}><h3>{props.date}</h3></p>
+                <h3 style={styles.p}>{props.description}</h3>
+                <h3 style={styles.p}>{props.content}</h3>
+                <h3 style={styles.p}>{props.source}</h3>
+                <h3 style={styles.p}>{props.author}</h3>
+                <h3 style={styles.p}>{props.date}</h3>
             </section>
         </div>
         </li>

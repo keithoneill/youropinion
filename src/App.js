@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import SearchInput from './components/search/SearchInput';
 import Article from './components/article/Article';
@@ -8,10 +8,13 @@ import Article from './components/article/Article';
 function App() {
 const [articles, setArticles] = useState([]);
 
-useEffect(() => {
+function getNews(e) {
+  //this.setState({ e.target.value })
   async function searchArticles() {
     var url = 'http://newsapi.org/v2/everything?' +
-    'q=Apple&' +
+    'q=' +
+    e.target.value +
+    '&' +
     'from=2020-09-06&' +
     'sortBy=popularity&' +
     'apiKey=d071bbbfe8e04f14bee177be536fde78';
@@ -43,7 +46,7 @@ useEffect(() => {
     }
   }
   searchArticles();
-}, []);
+}
 
 let news = articles.map((articles, i) => {
   if(articles === ''){
@@ -53,18 +56,10 @@ let news = articles.map((articles, i) => {
     return <Article key={i} source={articles.source} author={articles.author} title={articles.title} description={articles.description} image={articles.image} date={articles.date} content={articles.content} />
   }
 })
-function searchNews(search){
-  return function(searchNewsTitle){
-    try {
-      return searchNewsTitle.pTitle.toLowerCase().includes(search.toLowerCase())
-    } catch (error) {
-      return !search
-    }
-  }
-}
+
   return (
     <div className="App">
-      <SearchInput placeholder="Search News"/>
+      <SearchInput getNews={getNews} placeholder="Search News"/>
       { news }
     </div>
   );

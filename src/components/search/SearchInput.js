@@ -7,8 +7,8 @@ const SearchInput = props => {
         <div style={styles.searching}>
             <form style={styles.form}>
                 <GrSearch style={styles.icon} />
-                <input type="text" style={styles.input} placeholder={props.placeholder}/>
-                <input type="submit" onChange={props.searchNews} value="Submit" />
+                <input type="text" onChange={props.getNews} style={styles.input} placeholder={props.placeholder}/>
+                <input type="submit" value="Submit" />
             </form>
         </div>
     )
