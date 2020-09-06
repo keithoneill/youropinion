@@ -3,10 +3,10 @@ import React from 'react';
 
 const Article = props => {   
     return(
-        <li key={props.id}>
+        <li key={props.id} >
         <div style={styles.article}>
             <header style={styles.header}>
-                <h1 style={styles.title}>{props.title}</h1> 
+                <h1 style={styles.title}>{props.title}</h1>
                 <img style={styles.photo} src={props.image} alt={props.title} />    
             </header>
             <section style={styles.info}>            
