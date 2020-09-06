@@ -8,7 +8,6 @@ const SearchInput = props => {
             <form style={styles.form}>
                 <GrSearch style={styles.icon} />
                 <input type="text" onChange={props.getNews} style={styles.input} placeholder={props.placeholder}/>
-                <input type="submit" value="Submit" />
             </form>
         </div>
     )
@@ -37,7 +36,7 @@ const styles={
         paddingLeft: '.5rem'
     },
     searching:{
-        position: 'absolute',
+        display: 'flex',
         top: '1rem',
         left: '0',
         right: '4rem'

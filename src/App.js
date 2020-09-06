@@ -9,7 +9,6 @@ function App() {
 const [articles, setArticles] = useState([]);
 
 function getNews(e) {
-  //this.setState({ e.target.value })
   async function searchArticles() {
     var url = 'http://newsapi.org/v2/everything?' +
     'q=' +
@@ -38,6 +37,7 @@ function getNews(e) {
                 image: `${article.urlToImage}`,
                 date: `${article.publishedAt}`,
                 content: `${article.content}`,
+                url: `${article.url}`
             }
         )))
         

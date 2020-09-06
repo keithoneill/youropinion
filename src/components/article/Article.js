@@ -1,14 +1,15 @@
 import React from 'react';
 
+
 const Article = props => {   
     return(
         <li key={props.id}>
         <div style={styles.article}>
             <header style={styles.header}>
-                <h1 style={styles.title}>{props.title}</h1>              
+                <h1 style={styles.title}>{props.title}</h1> 
+                <img style={styles.photo} src={props.image} alt={props.title} />    
             </header>
-            <section style={styles.info}>
-                <img style={styles.photo} src={props.image} alt="Article" />
+            <section style={styles.info}>            
                 <h3 style={styles.p}>{props.description}</h3>
                 <h3 style={styles.p}>{props.content}</h3>
                 <h3 style={styles.p}>{props.source}</h3>
@@ -25,7 +26,7 @@ export default Article
 
 const styles={
     article:{
-        paddingTop: '5rem',
+        paddingTop: '3rem',
         display: 'flex',
         flexDirection: 'column'
     },
@@ -51,10 +52,11 @@ const styles={
         display: 'inline'
     },
     photo:{
-        width: '9rem',
-        heigh: '20rem',
-        float: 'left',
-        margin: '.8rem'
+        display: 'block',
+        justifyContent: 'center',
+        width: '75%',
+        margin: 'auto',
+        cursor: 'pointer'
     },
     title:{
         width: '50%',
@@ -63,6 +65,7 @@ const styles={
         marginRight: 'auto',
     },
     p:{
+        display: 'block',
         textAlign: 'left',
         margin: '2.5rem 0 3rem 3rem',
         color: 'black'
