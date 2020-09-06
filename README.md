@@ -3,22 +3,16 @@
 ---
 Your Opinion is web application that is intended to allow the user an easier way to develop their own opinion. Instead of having their opinion swayed by the news outlet they mostly use, Your Opinion will display news from multiple outlets at once. Not only that, Your Opinion will divide the news outlets between left and right leaning companies. The information will be displayed simply in a left and right column. This will allow the user to clearly see how the information is being presented to them and allow them to form their own opinion.
 
-### Project Proposal:
-#### [Spark Page](https://spark.adobe.com/page/JfRK63oEu2YW3/)
-
 
 <br>
 
 
-## archive
+## public
 
-The archive folder contains assignments from previous courses and will not be used for this project.
+The public folder contains logos that will be updated
 
 
-## weekly assignments
+## source
 
-The weekly assignments folder contains various weekly assignments that will be completed throughout the course. To date the folder contains wireframes and high fidelity mockups.
+The source folder contains all of the components for the application including the main App.js
 
-## images
-
-The images folder contains images collected for high fidelity mockups and images that will be used in building the site.
