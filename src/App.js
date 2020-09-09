@@ -23,14 +23,22 @@ const handleSubmit = event => {
   event.preventDefault();
 };
 
+function getImage(image){
+  if(typeof image === 'undefined'){
+    return 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3900&q=80'
+  }
+  else{
+    return image.thumbnail.contentUrl;
+  }
+}
+
 function getNews() {
   //e.preventDefault();
-  fetch(`https://bing-news-search1.p.rapidapi.com/news/search?count=100&freshness=Day&textFormat=Raw&safeSearch=Off&q=${value}`, {
+  fetch(`https://api.cognitive.microsoft.com/bing/v7.0/news/search?count=100&freshness=Day&textFormat=Raw&safeSearch=Off&q=${value}`, {
     "method": "GET",
     "headers": {
-      "x-rapidapi-host": "bing-news-search1.p.rapidapi.com",
-      "x-rapidapi-key": "d133bebc70mshf921f89b5fca90dp119555jsn402fe065fe99",
-      "x-bingapis-sdk": "true"
+      "Ocp-Apim-Subscription-Key": "fea5f0d614de4784b07bf08c6ac387a6",
+      "Accept": "application/json"
     }
     })
     .then(response => response.json())
@@ -40,7 +48,7 @@ function getNews() {
             source: `${article.provider[0].name}`,
             title: `${article.name}`,
             description: `${article.description}`,
-            image: `${article.image.thumbnail.contentUrl}`,
+            image: getImage(article.image),
             date: `${article.datePublished}`,
             content: `${article.url}`,
             url: `${article.url}`
