@@ -10,6 +10,7 @@ function App() {
 const [articles, setArticles] = useState([]);
 
 function getNews(e) {
+  e.preventDefault();
   async function searchArticles() {
     var url = 'http://newsapi.org/v2/everything?' +
     'q=' +
