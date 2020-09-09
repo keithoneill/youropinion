@@ -5,9 +5,9 @@ import { GrSearch } from 'react-icons/gr';
 const SearchInput = props => {
     return(
         <div style={styles.searching}>
-            <form style={styles.form}>
+            <form style={styles.form} onSubmit={props.handleSubmit}>
                 <GrSearch style={styles.icon} />
-                <input type="text" onSubmit={props.getNews} style={styles.input} placeholder={props.placeholder}/>
+                <input type="text" style={styles.input} onChange={props.handleChange} placeholder={props.placeholder}/>
                 <input type="submit" value="Submit" />
             </form>
         </div>

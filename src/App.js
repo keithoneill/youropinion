@@ -8,13 +8,27 @@ import ArticleRight from './components/article/ArticleRight';
 
 function App() {
 const [articles, setArticles] = useState([]);
+const [value, setValue] = useState('');
 
-function getNews(e) {
-  e.preventDefault();
+const handleChange = event => {
+  setValue(event.target.value);
+};
+
+const handleSubmit = event => {
+  if (value) {
+    getNews(value);
+  }
+  setValue('');
+
+  event.preventDefault();
+};
+
+function getNews() {
+  //e.preventDefault();
   async function searchArticles() {
     var url = 'http://newsapi.org/v2/everything?' +
     'q=' +
-    e.target.value +
+    value +
     '&' +
     'from=2020-08-10&' +
     'sources?language=en&' +
@@ -122,7 +136,7 @@ let news = articles.map((articles, i) => {
 
   return (
     <div className="App">
-      <SearchInput getNews={getNews} placeholder="Search News"/>
+      <SearchInput handleChange={handleChange} handleSubmit={handleSubmit} placeholder="Search News"/>
       { news }
     </div>
   );
