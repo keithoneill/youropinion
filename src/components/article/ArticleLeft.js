@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Article = props => {   
+const ArticleLeft = props => {   
     return(
         <li key={props.id} >
         <div style={styles.article}>
@@ -22,10 +22,11 @@ const Article = props => {
     
 }
 
-export default Article
+export default ArticleLeft
 
 const styles={
     article:{
+        float: 'left',
         paddingTop: '3rem',
         display: 'flex',
         flexDirection: 'column'
@@ -33,7 +34,7 @@ const styles={
     header:{
         display: 'inline-block',
         justifyContent: 'center',
-        background: '#edf2f4',
+        background: 'blue',
         width: '50%',
         marginLeft: 'auto',
         marginRight: 'auto',
