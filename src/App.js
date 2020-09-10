@@ -18,7 +18,7 @@ useEffect(() => {
     rating: `${ratingData.rating}`
   }))
   setData({data: ratingData})
-},[data]);
+},[]);
 
 const handleChange = event => {
   setValue(event.target.value);
@@ -68,7 +68,8 @@ function getNews() {
                 image: getImage(article.image),
                 date: `${article.datePublished}`,
                 content: `${article.url}`,
-                url: `${article.url}`
+                url: `${article.url}`,
+                rating: getRating(article.provider[0].name)
             }
         )))
         .then(article => setArticles(article))
@@ -78,13 +79,21 @@ function getNews() {
   fetchNews();
 }
 
+function getRating(source){
+  if(source.includes(data.source)){
+    return data.rating
+  }
+  else{
+    return 'not rated'
+  }
+}
 
 let news = articles.map((articles, i) => {
   if(articles === ''){
     return "Loading..."
   }
   else{
-    return <ArticleLeft key={i} source={articles.source} author={articles.author} title={articles.title} description={articles.description} image={articles.image} date={articles.date} content={articles.content} />
+    return <ArticleLeft key={i} source={articles.source} author={articles.rating} title={articles.title} description={articles.description} image={articles.image} date={articles.date} content={articles.content} />
   }
 })
 
