@@ -39,7 +39,7 @@ const handleSubmit = event => {
 
 function getImage(image){
   if(typeof image === 'undefined'){
-    return 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3900&q=80  '
+    return 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3900&q=80'
   }
   else{
     return image.thumbnail.contentUrl;
@@ -85,16 +85,12 @@ function getNews() {
 
 function getRating(name){
   let outlet = cleanUpSource(name);
-  // if(data.includes(outlet)){
-  //   return data.rating[data.news_source]
-  // }
-  // else{
-  //   return 'not-rated'
-  // }
-  data.forEach(element => {
-    return element.filter(source => source.includes(outlet));
-    //console.log(element);
-  });
+  for (let source of Object.keys(data)) {
+    var newsOutlet = data[source];
+    if(newsOutlet.news_source.includes(outlet)){
+      return newsOutlet.rating;
+    }
+  }
 }
 
 function cleanUpSource(source){
