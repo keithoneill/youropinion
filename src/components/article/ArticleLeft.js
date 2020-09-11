@@ -26,7 +26,6 @@ export default ArticleLeft
 
 const styles={
     article:{
-        float: 'left',
         paddingTop: '3rem',
         display: 'flex',
         flexDirection: 'column'

@@ -10,14 +10,14 @@ import allsidesData from './components/data/allsidesData.json'
 function App() {
 const [articles, setArticles] = useState([]);
 const [value, setValue] = useState('');
-const [data, setData] = useState([]);
+const [data, setData] = useState();
 
 useEffect(() => {
   const ratingData = allsidesData.map(ratingData => ({
     source: `${ratingData.news_source}`,
     rating: `${ratingData.rating}`
   }))
-  setData({data: ratingData})
+  setData({ratingData})
 },[]);
 
 const handleChange = event => {
@@ -62,7 +62,7 @@ function getNews() {
         .then(response => response.json())
         .then(response => response.value.map(article => (
             {
-                source: `${article.provider[0].name}`,
+                source: cleanUpSource(article.provider[0].name),
                 title: `${article.name}`,
                 description: `${article.description}`,
                 image: getImage(article.image),
@@ -79,13 +79,26 @@ function getNews() {
   fetchNews();
 }
 
-function getRating(source){
-  if(source.includes(data.source)){
-    return data.rating
+function getRating(name){
+  let outlet = cleanUpSource(name);
+  let rating = '';
+  //console.log(source);
+  for(let rating of Object.keys(data.ratingData)){
+    var source = data.ratingData[rating];
+    //console.log(source.rating)
+    if(source.source.includes(outlet)){
+      rating = source.rating;
+    }
+    else{
+      rating = 'no-rating'
+    }
   }
-  else{
-    return 'not rated'
-  }
+  return rating;
+}
+
+function cleanUpSource(source){
+  let name = source.split('on MSN.com').shift();
+  return name;
 }
 
 let news = articles.map((articles, i) => {
