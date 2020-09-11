@@ -12,13 +12,17 @@ const [articles, setArticles] = useState([]);
 const [value, setValue] = useState('');
 const [data, setData] = useState();
 
+// useEffect(() => {
+//   const ratingData = allsidesData.map(ratingData => ({
+//     source: `${ratingData.news_source}`,
+//     rating: `${ratingData.rating}`
+//   }))
+//   setData({ratingData})
+// },[]);
+
 useEffect(() => {
-  const ratingData = allsidesData.map(ratingData => ({
-    source: `${ratingData.news_source}`,
-    rating: `${ratingData.rating}`
-  }))
-  setData({ratingData})
-},[]);
+  setData(allsidesData);
+},[])
 
 const handleChange = event => {
   setValue(event.target.value);
@@ -81,19 +85,16 @@ function getNews() {
 
 function getRating(name){
   let outlet = cleanUpSource(name);
-  let rating = '';
-  //console.log(source);
-  for(let rating of Object.keys(data.ratingData)){
-    var source = data.ratingData[rating];
-    //console.log(source.rating)
-    if(source.source.includes(outlet)){
-      rating = source.rating;
-    }
-    else{
-      rating = 'no-rating'
-    }
-  }
-  return rating;
+  // if(data.includes(outlet)){
+  //   return data.rating[data.news_source]
+  // }
+  // else{
+  //   return 'not-rated'
+  // }
+  data.forEach(element => {
+    return element.filter(source => source.includes(outlet));
+    //console.log(element);
+  });
 }
 
 function cleanUpSource(source){
