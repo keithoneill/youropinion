@@ -1,28 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import SearchInput from './components/search/SearchInput';
-import ArticleLeft from './components/article/ArticleLeft';
-//import ArticleRight from './components/article/ArticleRight';
-import allsidesData from './components/data/allsidesData.json'
+import Article from './components/article/Article';
+//import allsidesData from './components/data/allsidesData.json';
+import mediaBiasFactCheckData from './components/data/mediaBiasFactCheckData.json';
 
 
 
 function App() {
 const [articles, setArticles] = useState([]);
 const [value, setValue] = useState('');
-const [data, setData] = useState();
+//const [data, setData] = useState();
 
 // useEffect(() => {
-//   const ratingData = allsidesData.map(ratingData => ({
-//     source: `${ratingData.news_source}`,
-//     rating: `${ratingData.rating}`
-//   }))
-//   setData({ratingData})
-// },[]);
-
-useEffect(() => {
-  setData(allsidesData);
-},[])
+//   setData(mediaBiasFactCheckData);
+// },[])
 
 const handleChange = event => {
   setValue(event.target.value);
@@ -73,7 +65,7 @@ function getNews() {
                 date: `${article.datePublished}`,
                 content: `${article.url}`,
                 url: `${article.url}`,
-                rating: getRating(article.provider[0].name)
+                rating: getRating(article.url, article.provider[0].name)
             }
         )))
         .then(article => setArticles(article))
@@ -83,36 +75,108 @@ function getNews() {
   fetchNews();
 }
 
-function getRating(name){
-  let outlet = cleanUpSource(name);
-  for (let source of Object.keys(data)) {
-    var newsOutlet = data[source];
-    if(newsOutlet.news_source.includes(outlet)){
-      return newsOutlet.rating;
+function getRating(url, name){
+  let outlet = cleanUpSource(name).toLowerCase();
+  for (let source of Object.keys(mediaBiasFactCheckData)) {
+    var newsOutlet = mediaBiasFactCheckData[source];
+    //console.log(url);
+    if(url.includes(source)){
+      return newsOutlet.b;
+    }
+    else if (newsOutlet.n.toLowerCase().includes(outlet)){
+      
+      return newsOutlet.b;
     }
   }
 }
 
 function cleanUpSource(source){
-  let name = source.split('on MSN.com').shift();
+  let name = source.split(' on MSN.com').shift();
   return name;
 }
 
-let news = articles.map((articles, i) => {
+let leftNews = articles.map((articles, i) => {
   if(articles === ''){
     return "Loading..."
   }
   else{
-    return <ArticleLeft key={i} source={articles.source} author={articles.rating} title={articles.title} description={articles.description} image={articles.image} date={articles.date} content={articles.content} />
+    if(articles.rating === undefined){
+      console.log(`${articles.source} rating is not defined!`)
+      return null;
+    }
+    else if(articles.rating.includes('left')){
+      return <Article key={i} source={articles.source} rating={articles.rating} title={articles.title} description={articles.description} image={articles.image} date={articles.date} content={articles.content} />
+    }
+    else{
+      return null;
+    }
   }
 })
+let rightNews = articles.map((articles, i) => {
+  if(articles === ''){
+    return "Loading..."
+  }
+  else{
+    if(articles.rating === undefined){
+      console.log(`${articles.source} rating is not defined!`)
+      return null;
+    }
+    else if(articles.rating.includes('right')){
+      return <Article key={i} source={articles.source} rating={articles.rating} title={articles.title} description={articles.description} image={articles.image} date={articles.date} content={articles.content} />
+    }
+    else{
+      return null;
+    }
+  }
+})
+
 
   return (
     <div className="App">
       <SearchInput handleChange={handleChange} handleSubmit={handleSubmit} placeholder="Search News"/>
-      { news }
+      <div style={styles.newsDisplay}>
+        <div style={styles.row}>
+          <div style={styles.column}>
+            <div style={styles.leftColumn}>
+              { leftNews }
+            </div>
+          </div>
+          <div style={styles.column}>
+            <div style={styles.rightColumn}>
+              { rightNews }
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 
 export default App;
+
+const styles={
+  newsDisplay:{
+      margin: '1rem',
+      backgroundColor: 'white'
+  },
+  row:{
+      display: 'flex',
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      width: '100%'
+  },
+  column:{
+    display: 'flex',
+    flexDirection: 'column',
+    flexBasis: 'auto',
+    flex: '1'
+  },
+  leftColumn:{
+    backgroundColor: '#1d3557',
+    height: '100%'
+  },
+  rightColumn:{
+    backgroundColor: '#e63946',
+    height: '100%'
+  },
+}
