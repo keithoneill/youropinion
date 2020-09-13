@@ -8,7 +8,6 @@ const SearchInput = props => {
             <form style={styles.form} onSubmit={props.handleSubmit}>
                 <GrSearch style={styles.icon} />
                 <input type="text" style={styles.input} onChange={props.handleChange} placeholder={props.placeholder}/>
-                <input type="submit" value="Submit" />
             </form>
         </div>
     )
