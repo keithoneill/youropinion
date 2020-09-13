@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './App.css';
 import SearchInput from './components/search/SearchInput';
 import Article from './components/article/Article';
-//import allsidesData from './components/data/allsidesData.json';
 import mediaBiasFactCheckData from './components/data/mediaBiasFactCheckData.json';
+import Header from './components/header/Header';
 
 
 
@@ -114,7 +114,7 @@ let leftNews = articles.map((articles, i) => {
       return null;
     }
     else if(articles.rating.includes('left')){
-      return <Article key={i} source={articles.source} rating={articles.rating} title={articles.title} description={articles.description} image={articles.image} date={articles.date} />
+      return <Article key={i} source={articles.source} title={articles.title} description={articles.description} image={articles.image} date={articles.date} />
     }
     else{
       return null;
@@ -131,7 +131,7 @@ let rightNews = articles.map((articles, i) => {
       return null;
     }
     else if(articles.rating.includes('right')){
-      return <Article key={i} source={articles.source} rating={articles.rating} title={articles.title} description={articles.description} image={articles.image} date={articles.date} />
+      return <Article key={i} source={articles.source} title={articles.title} description={articles.description} image={articles.image} date={articles.date} />
     }
     else{
       return null;
@@ -142,6 +142,7 @@ let rightNews = articles.map((articles, i) => {
 
   return (
     <div className="App">
+      <Header />
       <SearchInput handleChange={handleChange} handleSubmit={handleSubmit} placeholder="Search News"/>
       <div style={styles.newsDisplay}>
         <div style={styles.row}>
