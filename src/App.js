@@ -62,7 +62,7 @@ function getNews() {
                 title: `${article.name}`,
                 description: `${article.description}`,
                 image: getImage(article.image),
-                date: `${article.datePublished}`,
+                date: convertDate(article.datePublished),
                 content: `${article.url}`,
                 url: `${article.url}`,
                 rating: getRating(article.url, article.provider[0].name)
@@ -95,6 +95,15 @@ function cleanUpSource(source){
   return name;
 }
 
+function convertDate(date){
+  let newDate = new Date(date);
+  let year = newDate.getFullYear();
+  let month = newDate.getMonth()+1;
+  let day = newDate.getDate();
+
+  return `${month}/${day}/${year}`;
+}
+
 let leftNews = articles.map((articles, i) => {
   if(articles === ''){
     return "Loading..."
@@ -105,7 +114,7 @@ let leftNews = articles.map((articles, i) => {
       return null;
     }
     else if(articles.rating.includes('left')){
-      return <Article key={i} source={articles.source} rating={articles.rating} title={articles.title} description={articles.description} image={articles.image} date={articles.date} content={articles.content} />
+      return <Article key={i} source={articles.source} rating={articles.rating} title={articles.title} description={articles.description} image={articles.image} date={articles.date} />
     }
     else{
       return null;
@@ -122,7 +131,7 @@ let rightNews = articles.map((articles, i) => {
       return null;
     }
     else if(articles.rating.includes('right')){
-      return <Article key={i} source={articles.source} rating={articles.rating} title={articles.title} description={articles.description} image={articles.image} date={articles.date} content={articles.content} />
+      return <Article key={i} source={articles.source} rating={articles.rating} title={articles.title} description={articles.description} image={articles.image} date={articles.date} />
     }
     else{
       return null;
