@@ -6175,7 +6175,7 @@
       "screen_name": "TODAYshow"
     },
     {
-      "news_source": "NBCNews.com",
+      "news_source": "NBC News",
       "rating": "left-center",
       "rating_num": 2,
       "type": "News Media",
@@ -6192,6 +6192,48 @@
       "wiki": "https://en.wikipedia.org/wiki/NBC_News",
       "facebook": "https://www.facebook.com/NBCNews/",
       "screen_name": "JoshNBCNews"
+    },
+    {
+      "news_source": "StarTribune",
+      "rating": "left-center",
+      "rating_num": 2,
+      "type": "News Media",
+      "agree": 0,
+      "disagree": 0,
+      "perc_agree": 0,
+      "url": "https://mediabiasfactcheck.com/minneapolis-star-tribune/",
+      "editorial_review": 0,
+      "blind_survey": 0,
+      "third_party_analysis": 0,
+      "independent_research": 0
+    },
+    {
+      "news_source": "Charlotte Observer",
+      "rating": "left-center",
+      "rating_num": 2,
+      "type": "News Media",
+      "agree": 0,
+      "disagree": 0,
+      "perc_agree": 0,
+      "url": "https://mediabiasfactcheck.com/charlotte-observer/",
+      "editorial_review": 0,
+      "blind_survey": 0,
+      "third_party_analysis": 0,
+      "independent_research": 0
+    },
+    {
+      "news_source": "Raleigh News & Observer",
+      "rating": "left-center",
+      "rating_num": 2,
+      "type": "News Media",
+      "agree": 0,
+      "disagree": 0,
+      "perc_agree": 0,
+      "url": "https://mediabiasfactcheck.com/raleigh-news-observer/",
+      "editorial_review": 0,
+      "blind_survey": 0,
+      "third_party_analysis": 0,
+      "independent_research": 0
     },
     {
       "news_source": "Neil J. Young",
@@ -6249,6 +6291,14 @@
       "wiki": "https://en.wikipedia.org/wiki/The_New_Republic",
       "facebook": "https://www.facebook.com/newrepublic/",
       "screen_name": "newrepublic"
+    },
+    {
+      "news_source": "Houston Chronicle",
+      "rating": "center",
+      "rating_num": 3,
+      "type": "News Media",
+      "url": "https://www.allsides.com/news-source/houston-chronicle-media-bias",
+      "independent_research": 1
     },
     {
       "news_source": "New York Daily News",
@@ -7065,6 +7115,24 @@
       "twitter": "NA",
       "wiki": "NA",
       "facebook": "https://www.facebook.com/ProgressiveVoicesofIowa/",
+      "screen_name": "NA"
+    },
+    {
+      "news_source": "Voice of America",
+      "rating": "center",
+      "rating_num": 3,
+      "type": "News Media",
+      "agree": 0,
+      "disagree": 0,
+      "perc_agree": 0,
+      "url": "https://mediabiasfactcheck.com/voice-of-america/",
+      "editorial_review": 0,
+      "blind_survey": 0,
+      "third_party_analysis": 0,
+      "independent_research": 0,
+      "twitter": "NA",
+      "wiki": "NA",
+      "facebook": "https://www.facebook.com/voiceofamerica/",
       "screen_name": "NA"
     },
     {

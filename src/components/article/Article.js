@@ -1,9 +1,9 @@
 import React from 'react';
 
 
-const ArticleLeft = props => {   
+const Article = props => {   
     return(
-        <li key={props.id} >
+        <article key={props.id} >
         <div style={styles.article}>
             <header style={styles.header}>
                 <h1 style={styles.title}>{props.title}</h1>
@@ -13,16 +13,16 @@ const ArticleLeft = props => {
                 <h3 style={styles.p}>{props.description}</h3>
                 <h3 style={styles.p}>{props.content}</h3>
                 <h3 style={styles.p}>{props.source}</h3>
-                <h3 style={styles.p}>{props.author}</h3>
+                <h3 style={styles.p}>{props.rating}</h3>
                 <h3 style={styles.p}>{props.date}</h3>
             </section>
         </div>
-        </li>
+        </article>
     )
     
 }
 
-export default ArticleLeft
+export default Article
 
 const styles={
     article:{
@@ -33,7 +33,7 @@ const styles={
     header:{
         display: 'inline-block',
         justifyContent: 'center',
-        background: 'blue',
+        background: '#e5e5e5',
         width: '50%',
         marginLeft: 'auto',
         marginRight: 'auto',
@@ -42,19 +42,16 @@ const styles={
     },
     info:{
         justifyContent: 'center',
-        background: '#edf2f4',
+        background: '#e5e5e5',
         width: '50%',
         marginLeft: 'auto',
         marginRight: 'auto',
         borderRadius: '0 0 10px 10px',
     },
-    li:{
-        display: 'inline'
-    },
     photo:{
         display: 'block',
         justifyContent: 'center',
-        width: '75%',
+        width: '50%',
         margin: 'auto',
         cursor: 'pointer'
     },
