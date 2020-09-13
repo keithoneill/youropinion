@@ -9,10 +9,10 @@ const Article = props => {
                 <h1 style={styles.title}>{props.title}</h1>
                 <img style={styles.photo} src={props.image} alt={props.title} />    
             </header>
-            <section style={styles.info}>            
-                <h3 style={styles.p}>{props.description}</h3>
+            <section style={styles.info}>
+                <h3 style={styles.h3}>{props.source}</h3>        
+                <p style={styles.p}>{props.description}</p>
                 <h3 style={styles.p}>{props.content}</h3>
-                <h3 style={styles.p}>{props.source}</h3>
                 <h3 style={styles.p}>{props.rating}</h3>
                 <h3 style={styles.p}>{props.date}</h3>
             </section>
@@ -40,6 +40,12 @@ const styles={
         borderRadius: '10px 10px 0 0',
         marginTop: '3rem'
     },
+    h3:{
+        fontFamily: 'Inder, sans-serif',
+        src: 'url("https://fonts.googleapis.com/css2?family=Inder")',
+        fontSize: '1.5rem',
+        margin: '2.5rem 0 3rem 3rem',
+    },
     info:{
         justifyContent: 'center',
         background: '#e5e5e5',
@@ -52,19 +58,24 @@ const styles={
         display: 'block',
         justifyContent: 'center',
         width: '50%',
-        margin: 'auto',
-        cursor: 'pointer'
+        margin: 'auto'
     },
     title:{
-        width: '50%',
-        textAlign: 'center',
+        fontFamily: 'Cairo, sans-serif',
+        src: 'url("https://fonts.googleapis.com/css2?family=Cairo")',
+        lineHeight: '2rem',
+        fontSize: '2rem',
+        width: '80%',
         marginLeft: 'auto',
-        marginRight: 'auto',
+        marginRight: 'auto'
     },
     p:{
+        fontFamily: 'Tenor Sans, sans-serif',
+        src: 'url("https://fonts.googleapis.com/css2?family=Tenor+Sans")',
         display: 'block',
         textAlign: 'left',
         margin: '2.5rem 0 3rem 3rem',
+        paddingRight: '1rem',
         color: 'black'
     }
 }
