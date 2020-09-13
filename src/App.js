@@ -165,7 +165,6 @@ export default App;
 
 const styles={
   newsDisplay:{
-      margin: '1rem',
       backgroundColor: 'white'
   },
   row:{
