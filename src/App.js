@@ -37,7 +37,7 @@ function getImage(image){
 
 function getNews() {
   async function fetchNews(){
-    const result = await fetch(`https://api.cognitive.microsoft.com/bing/v7.0/news/search?count=100&freshness=Day&textFormat=Raw&safeSearch=Off&q=${value}`, {
+    const result = await fetch(`https://api.cognitive.microsoft.com/bing/v7.0/news/search?count=100&freshness=day&textFormat=Raw&safeSearch=Off&q=${value}`, {
       "method": "GET",
       "headers": {
         "Ocp-Apim-Subscription-Key": "fea5f0d614de4784b07bf08c6ac387a6",

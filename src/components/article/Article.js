@@ -61,7 +61,7 @@ const styles={
     title:{
         fontFamily: 'Cairo, sans-serif',
         src: 'url("https://fonts.googleapis.com/css2?family=Cairo")',
-        lineHeight: '2rem',
+        lineHeight: '2.3rem',
         fontSize: '2rem',
         width: '80%',
         marginLeft: 'auto',

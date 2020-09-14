@@ -14574,6 +14574,20 @@
         "u": "https://mediabiasfactcheck.com/kaiser-family-foundation/",
         "p": "/"
     },
+    "khn.org": {
+        "b": "center",
+        "d": "khn.org",
+        "f": "https://www.facebook.com/KaiserHealthNews",
+        "t": "https://twitter.com/KHNews",
+        "h": "https://khn.org",
+        "M": "62",
+        "L": "929618",
+        "n": "Kaiser Health News",
+        "P": "88",
+        "r": "HIGH",
+        "u": "https://mediabiasfactcheck.com/kaiser-family-foundation/",
+        "p": "/"
+    },
     "knightfoundation.org": {
         "b": "left-center",
         "d": "knightfoundation.org",
