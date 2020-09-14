@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Article = props => {   
+function Article(props){   
     return(
         <article key={props.id} >
             <div style={styles.article}>
