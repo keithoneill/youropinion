@@ -4,17 +4,14 @@ import SearchInput from './components/search/SearchInput';
 import Article from './components/article/Article';
 import mediaBiasFactCheckData from './components/data/mediaBiasFactCheckData.json';
 import Header from './components/header/Header';
+import SearchFor from './components/searchFor/SearchFor';
 
 
 
 function App() {
 const [articles, setArticles] = useState([]);
 const [value, setValue] = useState('');
-//const [data, setData] = useState();
-
-// useEffect(() => {
-//   setData(mediaBiasFactCheckData);
-// },[])
+const [searchFor, setSearch] = useState('');
 
 const handleChange = event => {
   setValue(event.target.value);
@@ -24,8 +21,8 @@ const handleSubmit = event => {
   if (value) {
     getNews(value);
   }
+  setSearch(value);
   setValue('');
-
   event.preventDefault();
 };
 
@@ -104,13 +101,15 @@ function convertDate(date){
   return `${month}/${day}/${year}`;
 }
 
+
+
 let leftNews = articles.map((articles, i) => {
   if(articles === ''){
     return "Loading..."
   }
   else{
     if(articles.rating === undefined){
-      console.log(`${articles.source} rating is not defined!`)
+      console.log(`${articles.source} rating is not defined`)
       return null;
     }
     else if(articles.rating.includes('left')){
@@ -127,7 +126,7 @@ let rightNews = articles.map((articles, i) => {
   }
   else{
     if(articles.rating === undefined){
-      console.log(`${articles.source} rating is not defined!`)
+      console.log(`${articles.source} rating is not defined`)
       return null;
     }
     else if(articles.rating.includes('right')){
@@ -144,6 +143,7 @@ let rightNews = articles.map((articles, i) => {
     <div className="App">
       <Header />
       <SearchInput handleChange={handleChange} handleSubmit={handleSubmit} placeholder="Search News"/>
+      <SearchFor searchFor={searchFor} hasValue={searchFor}/>
       <div style={styles.newsDisplay}>
         <div style={styles.row}>
           <div style={styles.column}>
