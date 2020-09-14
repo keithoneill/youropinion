@@ -17,7 +17,6 @@ const Article = props => {
             </div>
         </article>
     )
-    
 }
 
 export default Article
