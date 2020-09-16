@@ -5,6 +5,11 @@ import Article from './components/article/Article';
 import mediaBiasFactCheckData from './components/data/mediaBiasFactCheckData.json';
 import Header from './components/header/Header';
 import SearchFor from './components/searchFor/SearchFor';
+import ViewDropdown from './components/dropdown/ViewDropdown';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col'
+
 
 
 
@@ -140,25 +145,30 @@ let rightNews = articles.map((articles, i) => {
 
 
   return (
-    <div className="App">
-      <Header />
-      <SearchInput handleChange={handleChange} handleSubmit={handleSubmit} placeholder="Search News"/>
-      <SearchFor searchFor={searchFor} hasValue={searchFor}/>
-      <div style={styles.newsDisplay}>
-        <div style={styles.row}>
-          <div style={styles.column}>
-            <div style={styles.leftColumn}>
-              { leftNews }
+    <Container fluid style={styles.newsDisplay}>
+      <Row>
+        <Col>
+          <Header />
+          <SearchInput handleChange={handleChange} handleSubmit={handleSubmit} placeholder="Search News"/>
+          <ViewDropdown />
+          <SearchFor searchFor={searchFor} hasValue={searchFor}/>
+          <div style={styles.newsDisplay}>
+            <div style={styles.row}>
+              <div style={styles.column}>
+                <div style={styles.leftColumn}>
+                  { leftNews }
+                </div>
+              </div>
+              <div style={styles.column}>
+                <div style={styles.rightColumn}>
+                  { rightNews }
+                </div>
+              </div>
             </div>
           </div>
-          <div style={styles.column}>
-            <div style={styles.rightColumn}>
-              { rightNews }
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
@@ -166,7 +176,7 @@ export default App;
 
 const styles={
   newsDisplay:{
-      backgroundColor: 'white'
+      backgroundColor: '#1A2F38'
   },
   row:{
       display: 'flex',
