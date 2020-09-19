@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react';//import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import SearchInput from './components/search/SearchInput';
 import Article from './components/article/Article';
@@ -145,14 +145,14 @@ let rightNews = articles.map((articles, i) => {
 
 
   return (
-    <Container fluid style={styles.newsDisplay}>
+    <Container fluid>
       <Row>
         <Col>
           <Header />
           <SearchInput handleChange={handleChange} handleSubmit={handleSubmit} placeholder="Search News"/>
           <ViewDropdown />
           <SearchFor searchFor={searchFor} hasValue={searchFor}/>
-          <div style={styles.newsDisplay}>
+          <div>
             <div style={styles.row}>
               <div style={styles.column}>
                 <div style={styles.leftColumn}>
@@ -175,9 +175,6 @@ let rightNews = articles.map((articles, i) => {
 export default App;
 
 const styles={
-  newsDisplay:{
-      backgroundColor: '#1A2F38'
-  },
   row:{
       display: 'flex',
       flexDirection: 'row',
