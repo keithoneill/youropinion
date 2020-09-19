@@ -1,21 +1,25 @@
 import React from 'react';
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 
 
 function Article(props){   
     return(
-        <article key={props.id} >
-            <div style={styles.article}>
-                <header style={styles.header}>
-                    <h1 style={styles.title}>{props.title}</h1>
-                    <img style={styles.photo} src={props.image} alt={props.title} />    
-                </header>
-                <section style={styles.info}>
-                    <h3 style={styles.h3}>{props.source}</h3>        
-                    <p style={styles.p}>{props.description}</p>
-                    <h3 style={styles.p}>{props.date}</h3>
-                </section>
-            </div>
-        </article>
+        <Card style={styles.article} key={props.id}>
+            <Card.Img variant="top" src={props.image} style={styles.photo}/>
+            <Card.Body>
+                <Card.Title>{props.title}</Card.Title>
+                <Card.Text>
+                {props.description}
+                </Card.Text>
+                <Button variant="secondary">Go To Article</Button>
+            </Card.Body>
+            <footer className="blockquote-footer">
+                <small className="text-muted">
+                <cite title="Source Title">{props.source}</cite>
+                </small>
+            </footer>
+        </Card>
     )
 }
 
@@ -23,57 +27,16 @@ export default Article
 
 const styles={
     article:{
-        paddingTop: '3rem',
-        display: 'flex',
-        flexDirection: 'column'
-    },
-    header:{
-        display: 'inline-block',
-        justifyContent: 'center',
-        background: '#e5e5e5',
-        width: '50%',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        borderRadius: '10px 10px 0 0',
-        marginTop: '3rem'
-    },
-    h3:{
-        fontFamily: 'Inder, sans-serif',
-        src: 'url("https://fonts.googleapis.com/css2?family=Inder")',
-        fontSize: '1.5rem',
-        margin: '2.5rem 0 3rem 3rem',
-    },
-    info:{
-        justifyContent: 'center',
-        background: '#e5e5e5',
-        width: '50%',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        borderRadius: '0 0 10px 10px'
+        width: '18rem',
+        margin: 'auto',
+        paddingBottom: '2rem',
+        marginBottom: '2rem',
+        marginTop: '2rem'
     },
     photo:{
-        display: 'block',
-        justifyContent: 'center',
-        width: '40%',
-        height: '20%',
-        margin: 'auto'
-    },
-    title:{
-        fontFamily: 'Cairo, sans-serif',
-        src: 'url("https://fonts.googleapis.com/css2?family=Cairo")',
-        lineHeight: '2.3rem',
-        fontSize: '2rem',
-        width: '80%',
-        marginLeft: 'auto',
-        marginRight: 'auto'
-    },
-    p:{
-        fontFamily: 'Tenor Sans, sans-serif',
-        src: 'url("https://fonts.googleapis.com/css2?family=Tenor+Sans")',
-        display: 'block',
-        textAlign: 'left',
-        margin: '2.5rem 3rem 3rem 3rem',
-        color: '#060C0E',
-        fontSize: '1.2rem'
+        width: '45%',
+        borderRadius: '3px',
+        margin: 'auto',
+        marginTop: '1rem'
     }
 }
