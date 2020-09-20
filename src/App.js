@@ -147,25 +147,23 @@ let rightNews = articles.map((articles, i) => {
   return (
     <Container fluid>
       <Row>
-        <Col>
+        <Col style={styles.header}>
           <Header />
-          <SearchInput handleChange={handleChange} handleSubmit={handleSubmit} placeholder="Search News"/>
-          <ViewDropdown />
-          <SearchFor searchFor={searchFor} hasValue={searchFor}/>
-          <div>
-            <div style={styles.row}>
-              <div style={styles.column}>
-                <div style={styles.leftColumn}>
-                  { leftNews }
-                </div>
-              </div>
-              <div style={styles.column}>
-                <div style={styles.rightColumn}>
-                  { rightNews }
-                </div>
-              </div>
-            </div>
-          </div>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+            <SearchInput handleChange={handleChange} handleSubmit={handleSubmit} placeholder="Search News"/>
+            <ViewDropdown />
+            <SearchFor searchFor={searchFor} hasValue={searchFor}/>
+          </Col>
+      </Row>
+      <Row>
+        <Col style={styles.leftColumn}>
+          { leftNews }
+        </Col>
+        <Col style={styles.rightColumn}>
+          { rightNews }
         </Col>
       </Row>
     </Container>
@@ -175,17 +173,9 @@ let rightNews = articles.map((articles, i) => {
 export default App;
 
 const styles={
-  row:{
-      display: 'flex',
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      width: '100%'
-  },
-  column:{
-    display: 'flex',
-    flexDirection: 'column',
-    flexBasis: 'auto',
-    flex: '1'
+  header:{
+    paddingLeft: '0',
+    paddingRight: '0'
   },
   leftColumn:{
     backgroundColor: '#1d3557',
