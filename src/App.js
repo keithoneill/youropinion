@@ -178,11 +178,9 @@ const styles={
     paddingRight: '0'
   },
   leftColumn:{
-    backgroundColor: '#1d3557',
-    height: '100%'
+    backgroundColor: '#1d3557'
   },
   rightColumn:{
-    backgroundColor: '#e63946',
-    height: '100%'
+    backgroundColor: '#e63946'
   },
 }
