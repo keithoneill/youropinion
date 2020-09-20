@@ -16,7 +16,7 @@ function Article(props){
             </Card.Body>
             <footer className="blockquote-footer">
                 <small className="text-muted">
-                <cite title="Source Title">{props.source}</cite>
+                    <cite title="Source Title">{props.source}</cite>
                 </small>
             </footer>
         </Card>
