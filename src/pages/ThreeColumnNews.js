@@ -6,6 +6,7 @@ import SearchFor from '../components/searchFor/SearchFor';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Loading from '../components/loading/Loading';
 
 
 
@@ -106,7 +107,7 @@ function convertDate(date){
 
 let leftNews = articles.map((articles, i) => {
   if(articles === ''){
-    return "Loading..."
+    return <Loading/>
   }
   else{
     if(articles.rating === undefined){
@@ -123,7 +124,7 @@ let leftNews = articles.map((articles, i) => {
 })
 let rightNews = articles.map((articles, i) => {
   if(articles === ''){
-    return "Loading..."
+    return <Loading/>
   }
   else{
     if(articles.rating === undefined){
@@ -140,7 +141,7 @@ let rightNews = articles.map((articles, i) => {
 })
 let centerNews = articles.map((articles, i) => {
     if(articles === ''){
-      return "Loading..."
+      return <Loading/>
     }
     else{
       if(articles.rating === undefined){
