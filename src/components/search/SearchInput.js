@@ -27,13 +27,15 @@ const styles={
         border: 'solid 2px',
         margin: '2rem',
         width: '45vw',
-        padding: '2rem 0rem 2rem 2rem'
+        padding: '2rem 0rem 2rem 2.5rem'
     },
     icon:{
         marginLeft: '2rem',
         marginTop: '4rem',
         position: 'absolute',
-        paddingLeft: '.5rem'
+        paddingLeft: '.5rem',
+        width: '2rem',
+        height: '2rem'
     },
     searching:{
         display: 'flex',
