@@ -1,5 +1,7 @@
 import React from 'react';
-import logo from '../../images/logo192.png'
+import logo from '../../images/logo192.png';
+
+
 
 function Header() {
 
@@ -31,8 +33,10 @@ const styles={
         marginRight: 'auto'
     },
     logo:{
-        width: '3.5rem',
-        paddingLeft: '2rem'
+        height: '3.5rem',
+        paddingLeft: '2rem',
+        marginTop: '1rem',
+        marginBottom: '1rem'
     },
     ul:{
         display: 'flex',
