@@ -1,18 +1,23 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
+//import Loading from '../loading/Loading';
 
 
-function Article(props){   
+
+function Article(props){
     return(
         <Card style={styles.article} key={props.id}>
             <Card.Img variant="top" src={props.image} style={styles.photo}/>
             <Card.Body>
                 <Card.Title>{props.title}</Card.Title>
+                <small className="text-muted">
+                    <cite title="Article Date">{props.date}</cite>
+                </small>
                 <Card.Text>
                 {props.description}
                 </Card.Text>
-                <Button variant="secondary">Go To Article</Button>
+                <Button variant="secondary" a href={props.url}target="_blank">Go To Article</Button>
             </Card.Body>
             <footer className="blockquote-footer">
                 <small className="text-muted">
@@ -20,6 +25,7 @@ function Article(props){
                 </small>
             </footer>
         </Card>
+        
     )
 }
 
