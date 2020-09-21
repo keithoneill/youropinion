@@ -1,6 +1,8 @@
 // Override default variables before the import
+@import url("https://fonts.googleapis.com/css2?family=Cairo");
 $body-bg: #1A2F38;
 $primary: #F1FAEE;
+$font-family-sans-serif: 'Cairo', sans-serif;
 
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';
