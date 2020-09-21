@@ -1,31 +1,8 @@
-.buttongroup{
-    top: 0;
-    right: 0;
-    position: absolute;
-}
 .buttons{
     margin-right: 1rem;
     margin-top: .8rem;
     background: #1A2F38;
     color: #F1FAEE;
+    margin-left: auto;
+    margin-right: auto;
 }
-
-@media (max-width: 768px) {
-    .buttongroup {
-        position: absolute;
-    }
-    .buttons{
-        width: 6rem;
-        font-size: 1rem;
-    }
-    .buttonone{
-        position: inherit;
-        right: 21rem;
-        top: 6.5rem;
-    }
-    .buttontwo{
-        position: inherit;
-        right: 1rem;
-        top: 6.5rem;
-    }
-  }
