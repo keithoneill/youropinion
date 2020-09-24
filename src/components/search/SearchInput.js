@@ -1,7 +1,6 @@
 import React from 'react';
 import { GrSearch } from 'react-icons/gr';
 
-
 const SearchInput = props => {
     return(
         <div style={styles.searching}>
