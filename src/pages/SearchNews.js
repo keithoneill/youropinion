@@ -182,27 +182,31 @@ let centerNews = articles.map((articles, i) => {
     return (
     <Container fluid>
         <Row>
-        <Col>
-          <div style={styles.search}>
-            <SearchInput handleChange={handleChange} handleSubmit={handleSubmit} placeholder="Search News"/>
-            <DropdownButton id="dropdown-basic-button" title="View" style={styles.view}>
-              <OverlayTrigger
-                      placement="right"
-                      delay={{ show: 250, hide: 400 }}
-                      overlay={renderTooltip1}>
-                    <Dropdown.Item onClick={handleClose}>Two Columns</Dropdown.Item>
+          <Col md={{ span: 3, offset: 3 }} xs={{ span: 4, offset: 2 }}>
+              <SearchInput handleChange={handleChange} handleSubmit={handleSubmit} placeholder="Search News"/>
+          </Col>
+          <Col xs={{ span: 3, offset: 3 }} style={styles.view}>
+          <DropdownButton id="dropdown-basic-button" title="View">
+                <OverlayTrigger
+                        placement="right"
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={renderTooltip1}>
+                      <Dropdown.Item onClick={handleClose}>Two Columns</Dropdown.Item>
+                  </OverlayTrigger>
+                <OverlayTrigger
+                  placement="right"
+                  delay={{ show: 250, hide: 400 }}
+                  overlay={renderTooltip2}>
+                    <Dropdown.Item onClick={handleShow}>Three Columns</Dropdown.Item>
                 </OverlayTrigger>
-              <OverlayTrigger
-                placement="right"
-                delay={{ show: 250, hide: 400 }}
-                overlay={renderTooltip2}>
-                  <Dropdown.Item onClick={handleShow}>Three Columns</Dropdown.Item>
-              </OverlayTrigger>
-            </DropdownButton>
-          </div>
-            <SearchFor searchFor={searchFor} hasValue={searchFor}/>
-        </Col>
+              </DropdownButton>
+          </Col>
         </Row>
+        <Row>
+            <Col>
+              <SearchFor searchFor={searchFor} hasValue={searchFor} />
+            </Col>
+          </Row>
         <Row>
         <Col style={styles.leftColumn}>
             { leftNews }
@@ -221,14 +225,8 @@ let centerNews = articles.map((articles, i) => {
 export default ThreeColumnNews;
 
 const styles={
-  search:{
-    display: 'flex',
-    flexDirecton: 'column',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
   view:{
-    alignSelf: 'middle'
+    alignSelf: 'center'
   },
   leftColumn:{
     backgroundColor: '#1d3557'
