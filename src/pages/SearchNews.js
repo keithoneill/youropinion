@@ -7,6 +7,10 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Loading from '../components/loading/Loading';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 
 
 
@@ -14,6 +18,23 @@ function ThreeColumnNews() {
 const [articles, setArticles] = useState([]);
 const [value, setValue] = useState('');
 const [searchFor, setSearch] = useState('');
+
+const [show, setShow] = useState(true);
+
+const handleClose = () => setShow(true);
+const handleShow = () => setShow(false);
+
+const renderTooltip1 = (props) => (
+  <Tooltip id="button-tooltip" {...props}>
+      This will dispay the news results in two columns, a left and a right.
+  </Tooltip>
+  );
+  const renderTooltip2 = (props) => (
+      <Tooltip id="button-tooltip" {...props}>
+          This will dispay the news results in three columns, a left, a right, and center.
+      </Tooltip>
+      );
+
 
 const handleChange = event => {
   setValue(event.target.value);
@@ -162,7 +183,23 @@ let centerNews = articles.map((articles, i) => {
     <Container fluid>
         <Row>
         <Col>
+          <div style={styles.search}>
             <SearchInput handleChange={handleChange} handleSubmit={handleSubmit} placeholder="Search News"/>
+            <DropdownButton id="dropdown-basic-button" title="View" style={styles.view}>
+              <OverlayTrigger
+                      placement="right"
+                      delay={{ show: 250, hide: 400 }}
+                      overlay={renderTooltip1}>
+                    <Dropdown.Item onClick={handleClose}>Two Columns</Dropdown.Item>
+                </OverlayTrigger>
+              <OverlayTrigger
+                placement="right"
+                delay={{ show: 250, hide: 400 }}
+                overlay={renderTooltip2}>
+                  <Dropdown.Item onClick={handleShow}>Three Columns</Dropdown.Item>
+              </OverlayTrigger>
+            </DropdownButton>
+          </div>
             <SearchFor searchFor={searchFor} hasValue={searchFor}/>
         </Col>
         </Row>
@@ -170,7 +207,7 @@ let centerNews = articles.map((articles, i) => {
         <Col style={styles.leftColumn}>
             { leftNews }
         </Col>
-        <Col style={styles.centerColumn}>
+        <Col style={styles.centerColumn} hidden={show}>
             { centerNews }
         </Col>
         <Col style={styles.rightColumn}>
@@ -184,6 +221,15 @@ let centerNews = articles.map((articles, i) => {
 export default ThreeColumnNews;
 
 const styles={
+  search:{
+    display: 'flex',
+    flexDirecton: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  view:{
+    alignSelf: 'middle'
+  },
   leftColumn:{
     backgroundColor: '#1d3557'
   },
