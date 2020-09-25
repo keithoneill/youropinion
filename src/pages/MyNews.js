@@ -16,13 +16,13 @@ const handleChange = event => {
     };
     
     const handleSubmit = event => {
-    event.preventDefault();
+        
     if (value) {
         getNewsSource(value);
     }
     setSearch(value);
     setValue('');
-    
+    event.preventDefault();
     };
 
 function getNewsSource(name){
@@ -31,18 +31,25 @@ function getNewsSource(name){
         var newsOutlet = mediaBiasFactCheckData[source];
         if (newsOutlet.n.toLowerCase().includes(outlet)){
             let sources = Array.from(Object.entries(newsOutlet));
-            console.log(sources);
-        let results = sources.map(source =>(
+            //console.log(sources);
+        (results => sources.map(newSource =>(
             {              
-                name: `${source[1]}`,
-                leaning: `${source[0]}`,
-                url: `${source[4]}`,
-                factualReporting: `${source[9]}`,
-                mediaBiasUrl: `${source[8]}`
+                name: `${sources[5][1]}`,
+                leaning: `${sources[0][1]}`,
+                url: `${sources[2][1]}`,
+                factualReporting: `${sources[7][1]}`,
+                mediaBiasUrl: `${sources[8][1]}`
             }
-        ))
-        setSource(results);
-        console.log(results);
+        )))
+        (newsSource => setSource(newsSource));
+        //let newData = [...results]
+        //console.log(newData);
+        //newData = results;
+        //setSource(source => [...source, results]);
+        //setSource(results);
+        //setSource(newData)
+        //setSource(results);
+        //console.log(results);
         }
     }
 }
@@ -73,7 +80,10 @@ let sourceData = source.map((source, i) => {
                 <Row>
                     <Col>
                         <SearchFor searchFor={searchFor} hasValue={searchFor} />
+                        <Row>
                         {sourceData}
+                        </Row>
+                        
                     </Col>
                 </Row>
             </Row>
