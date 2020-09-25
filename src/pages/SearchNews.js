@@ -104,7 +104,6 @@ function getRating(url, name){
       return newsOutlet.b;
     }
     else if (newsOutlet.n.toLowerCase().includes(outlet)){
-      
       return newsOutlet.b;
     }
   }
@@ -202,7 +201,7 @@ let centerNews = articles.map((articles, i) => {
               </DropdownButton>
           </Col>
         </Row>
-        <Row>
+          <Row>
             <Col>
               <SearchFor searchFor={searchFor} hasValue={searchFor} />
             </Col>
