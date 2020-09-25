@@ -13,7 +13,7 @@ function Header() {
 
     return(
         <div>
-        <Navbar className="header" expand="lg" sticky="top" fluid>
+        <Navbar className="header" expand="lg" sticky="top">
             <img src={logo} alt="YourOpinionLogo" className="logo"/>
                 <Navbar.Brand as={Link} to="/" className="h1">Your Opinion</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
