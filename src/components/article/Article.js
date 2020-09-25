@@ -19,9 +19,9 @@ function Article(props){
                 <Button variant="secondary" a href={props.url}target="_blank">Go To Article</Button>
             </Card.Body>
             <footer className="blockquote-footer">
-                <medium className="text-muted">
+                <small className="text-muted">
                     <cite title="Source Title">{props.source}</cite>
-                </medium>
+                </small>
             </footer>
         </Card>
         
