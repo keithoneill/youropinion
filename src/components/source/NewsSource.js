@@ -10,8 +10,11 @@ function NewsSource(props){
             <Card.Body>
                 <Card.Title>{props.source}</Card.Title>
                 <Card.Text>
+                Leaning: 
                 {props.bias}
-                Factual Reporting
+                </Card.Text>
+                <Card.Text>
+                Factual Reporting: 
                 {props.reporting}
                 </Card.Text>
                 <Button variant="secondary" a href={props.url}target="_blank">Visit News Site</Button>
