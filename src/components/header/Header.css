@@ -1,0 +1,22 @@
+.h1{
+    font-size: 3rem;
+    color: #060C0E;
+    padding-left: 2rem;
+}
+.logo{
+    width: 3.5rem;
+    height: 3.5rem;
+}
+.header{
+    background-color: #f1faee;
+}
+@media (max-width: 992px) {
+    .h1{
+        font-size: 2rem;
+
+    }
+    .logo{
+        height: 2rem;
+        width: 2rem;
+    }
+ }

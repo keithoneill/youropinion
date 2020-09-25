@@ -1,45 +1,37 @@
 import React from 'react';
 import logo from '../../images/logo192.png';
+import { Nav, Navbar } from 'react-bootstrap';
+import { Switch, Route, Link } from 'react-router-dom';
+import SearchNews from '../../pages/SearchNews';
+import HowItWorks from '../../pages/HowItWorks';
+import MyNews from '../../pages/MyNews';
+import './Header.css';
 
 
 
 function Header() {
 
     return(
-        <header style={styles.header}>
-            <img src={logo} alt="YourOpinionLogo" style={styles.logo} />
-            <h1 style={styles.h1}>Your Opinion</h1>
-        </header>
+        <div>
+        <Navbar className="header" expand="lg" sticky="top" fluid>
+            <img src={logo} alt="YourOpinionLogo" className="logo"/>
+                <Navbar.Brand as={Link} to="/" className="h1">Your Opinion</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse className="justify-content-end">
+            <Nav className="text-nowrap">
+                <Nav.Link as={Link} to="/">Home</Nav.Link>
+                <Nav.Link as={Link} to="/HowItWorks">How It Works</Nav.Link>
+                <Nav.Link as={Link} to="/MyNews">My News Source</Nav.Link>
+            </Nav>
+            </Navbar.Collapse>
+            </Navbar>
+            <Switch>
+                <Route exact path ='/' component={SearchNews} />
+                <Route exact path ='/HowItWorks' component={HowItWorks} />
+                <Route exact path ='/MyNews' component={MyNews} />
+            </Switch>
+        </div>
     )
 }
 
 export default Header
-
-const styles={
-    header: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        background: '#f1faee',
-        
-    },
-    h1:{
-        fontFamily: 'Cairo, sans-serif',
-        src: 'url("https://fonts.googleapis.com/css2?family=Cairo")',
-        fontSize: '3rem',
-        color: '#060C0E',
-        marginLeft: 'auto',
-        paddingRight: '3.5rem',
-        marginRight: 'auto'
-    },
-    logo:{
-        height: '3.5rem',
-        paddingLeft: '2rem',
-        marginTop: '1rem',
-        marginBottom: '1rem'
-    },
-    ul:{
-        display: 'flex',
-        flexDirection: 'row'
-    }
-}
