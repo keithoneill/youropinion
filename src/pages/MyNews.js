@@ -16,12 +16,13 @@ const handleChange = event => {
     };
     
     const handleSubmit = event => {
+    event.preventDefault();
     if (value) {
         getNewsSource(value);
     }
     setSearch(value);
     setValue('');
-    event.preventDefault();
+    
     };
 
 function getNewsSource(name){
@@ -33,14 +34,15 @@ function getNewsSource(name){
             console.log(sources);
         let results = sources.map(source =>(
             {              
-                name: source.n,
-                leaning: source.b,
-                url: source.h,
-                factualReporting: source.r,
-                mediaBiasUrl: source.u
+                name: `${source[1]}`,
+                leaning: `${source[0]}`,
+                url: `${source[4]}`,
+                factualReporting: `${source[9]}`,
+                mediaBiasUrl: `${source[8]}`
             }
         ))
         setSource(results);
+        console.log(results);
         }
     }
 }
