@@ -49,6 +49,8 @@ const handleSubmit = event => {
   event.preventDefault();
 };
 
+let hasResults = '';
+
 function getImage(image){
   if(typeof image === 'undefined'){
     return 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3900&q=80'
@@ -127,7 +129,7 @@ function convertDate(date){
 
 let leftNews = articles.map((articles, i) => {
   if(articles === ''){
-    return <Loading/>
+    return <Loading hasValue={searchFor}/>
   }
   else{
     if(articles.rating === undefined){
@@ -135,6 +137,7 @@ let leftNews = articles.map((articles, i) => {
       return null;
     }
     else if(articles.rating.includes('left')){
+      hasResults = true;
       return <Article key={i} source={articles.source} title={articles.title} description={articles.description} image={articles.image} date={articles.date} url={articles.url}/>
     }
     else{
@@ -144,7 +147,7 @@ let leftNews = articles.map((articles, i) => {
 })
 let rightNews = articles.map((articles, i) => {
   if(articles === ''){
-    return <Loading/>
+    return <Loading hasValue={searchFor}/>
   }
   else{
     if(articles.rating === undefined){
@@ -152,6 +155,7 @@ let rightNews = articles.map((articles, i) => {
       return null;
     }
     else if(articles.rating.includes('right')){
+      hasResults = true;
       return <Article key={i} source={articles.source} title={articles.title} description={articles.description} image={articles.image} date={articles.date} url={articles.url}/>
     }
     else{
@@ -161,7 +165,7 @@ let rightNews = articles.map((articles, i) => {
 })
 let centerNews = articles.map((articles, i) => {
     if(articles === ''){
-      return <Loading/>
+      return <Loading hasValue={searchFor}/>
     }
     else{
       if(articles.rating === undefined){
@@ -176,7 +180,6 @@ let centerNews = articles.map((articles, i) => {
       }
     }
   })
-
 
     return (
     <Container fluid>
@@ -203,20 +206,20 @@ let centerNews = articles.map((articles, i) => {
         </Row>
           <Row>
             <Col>
-              <SearchFor searchFor={searchFor} hasValue={searchFor} />
+              {hasResults ? <SearchFor searchFor={searchFor} hasValue={searchFor} display={'Displaying Recent News Results About'}/> : <SearchFor searchFor={searchFor} hasValue={searchFor} display={'No Recent News About'}/>}
             </Col>
           </Row>
-        <Row>
-        <Col style={styles.leftColumn}>
-            { leftNews }
-        </Col>
-        <Col style={styles.centerColumn} hidden={show}>
-            { centerNews }
-        </Col>
-        <Col style={styles.rightColumn}>
-            { rightNews }
-        </Col>
-        </Row>
+            <Row>
+              <Col style={styles.leftColumn}>
+                  { leftNews }
+              </Col>
+              <Col style={styles.centerColumn} hidden={show}>
+                  { centerNews }
+              </Col>
+              <Col style={styles.rightColumn}>
+                  { rightNews }
+              </Col>
+            </Row>
     </Container>
     );
 }
