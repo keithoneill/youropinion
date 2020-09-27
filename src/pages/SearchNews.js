@@ -183,6 +183,11 @@ let centerNews = articles.map((articles, i) => {
 
     return (
     <Container fluid>
+      <Row>
+        <Col style={styles.col} className="text-center">
+            Search for any news topic below to find Your Opinion
+        </Col>
+      </Row>
         <Row>
           <Col md={{ span: 3, offset: 3 }} xs={{ span: 4, offset: 2 }}>
               <SearchInput handleChange={handleChange} handleSubmit={handleSubmit} placeholder="Search News"/>
@@ -238,5 +243,11 @@ const styles={
   },
   centerColumn:{
       backgroundColor: '#F3F5F6'
+  },
+  col:{
+    color: '#F3F5F6',
+    fontSize: '1.3rem',
+    paddingTop: '2rem',
+    marginLet: '2rem'
   }
 }
