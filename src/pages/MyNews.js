@@ -4,69 +4,71 @@ import SearchInput from '../components/search/SearchInput';
 import SearchFor from '../components/searchFor/SearchFor';
 import mediaBiasFactCheckData from '../components/data/mediaBiasFactCheckData.json';
 import NewsSource from '../components/source/NewsSource';
-import Loading from '../components/loading/Loading';
 
 function MyNews(){
 const [source, setSource] = useState([]);
 const [value, setValue] = useState('');
 const [searchFor, setSearch] = useState('');
+const isArray = checkArray();
 
 const handleChange = event => {
     setValue(event.target.value);
     };
     
-    const handleSubmit = event => {
-        
+    const handleSubmit = event => {    
     if (value) {
         getNewsSource(value);
     }
     setSearch(value);
     setValue('');
-    event.preventDefault();
+    event.preventDefault();    
     };
 
+    function checkArray(){
+        if(Array.isArray(source)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
 function getNewsSource(name){
+    setSource('');
     let outlet = name.toLowerCase();
-    for (const [source] of Object.entries(mediaBiasFactCheckData)) {
-        var newsOutlet = mediaBiasFactCheckData[source];
-        if (newsOutlet.n.toLowerCase().includes(outlet)){
-            let sources = Array.from(Object.entries(newsOutlet));
-            //console.log(sources);
-        (results => sources.map(newSource =>(
+    var newsOutlet = Object.keys(mediaBiasFactCheckData).map(function(key) {
+        return mediaBiasFactCheckData[key]
+    });
+    for (let [value] of Object.entries(newsOutlet)) {
+        var sources = []
+        sources.push(newsOutlet[value])
+        if (sources[0].n.toLowerCase().includes(outlet)){  
+        let newsSource = sources.map(source =>(
             {              
-                name: `${sources[5][1]}`,
-                leaning: `${sources[0][1]}`,
-                url: `${sources[2][1]}`,
-                factualReporting: `${sources[7][1]}`,
-                mediaBiasUrl: `${sources[8][1]}`
+                name: `${source.n}`,
+                leaning: `${source.b}`,
+                url: `${source.h}`,
+                factualReporting: `${source.r}`,
+                mediaBiasUrl: `${source.u}`
             }
-        )))
-        (newsSource => setSource(newsSource));
-        //let newData = [...results]
-        //console.log(newData);
-        //newData = results;
-        //setSource(source => [...source, results]);
-        //setSource(results);
-        //setSource(newData)
-        //setSource(results);
-        //console.log(results);
+        ))
+        setSource(source => [...source, newsSource]);
         }
     }
 }
-let sourceData = source.map((source, i) => {
-    if(source === ''){
-    return <Loading/>
-    }
-    else{
-        if(source !== ''){
-        return <NewsSource key={i} source={source.name} bias={source.leaning} url={source.url} biasurl={source.mediaBiasUrl} reporting={source.factualReporting}/>
-        }
-        else{
-        return null;
-    }
-    }
-})
 
+function SourceData(){
+    return (
+        source.map(source => <Col><NewsSource key={source} source={source[0].name} bias={source[0].leaning} url={source[0].url} biasurl={source[0].mediaBiasUrl} reporting={source[0].factualReporting}/></Col>)
+    )
+}
+
+
+function NoData(){
+    return (
+    <SearchFor searchFor={searchFor} hasValue={searchFor} display={'No News Outlets Containing'}/>
+    )
+} 
 
     return(
         <Container>
@@ -74,18 +76,12 @@ let sourceData = source.map((source, i) => {
                 <Col style={styles.col}>
                     <h1>Your Opinion</h1>
                     <h2>Where Does Your News Lean?</h2>
-                    <p>Want to know where your news source leans? Just search it below</p>
+                    <p>Want to know where your news source leans? Just search it below.</p>
                     <SearchInput handleChange={handleChange} handleSubmit={handleSubmit} placeholder="Search For A News Source"/>
                 </Col>
-                <Row>
-                    <Col>
-                        <SearchFor searchFor={searchFor} hasValue={searchFor} />
-                        <Row>
-                        {sourceData}
-                        </Row>
-                        
-                    </Col>
-                </Row>
+                    <Row>
+                        {isArray ? SourceData() : NoData()}
+                    </Row>
             </Row>
         </Container>
     )
