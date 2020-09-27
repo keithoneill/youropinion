@@ -8,13 +8,13 @@ function NewsSource(props){
     return(
         <Card style={styles.article} key={props.id}>
             <Card.Body>
-                <Card.Title>{props.source}</Card.Title>
+                <Card.Title><h3>{props.source}</h3></Card.Title>
                 <Card.Text>
                 Leaning:
                 {props.bias}
                 </Card.Text>
                 <Card.Text>
-                Factual Reporting: 
+                Factual Reporting:
                 {props.reporting}
                 </Card.Text>
                 <Button variant="secondary" a href={props.url}target="_blank">Visit News Site</Button>
@@ -35,12 +35,7 @@ const styles={
         margin: 'auto',
         paddingBottom: '2rem',
         marginBottom: '2rem',
-        marginTop: '2rem'
-    },
-    photo:{
-        width: '45%',
-        borderRadius: '3px',
-        margin: 'auto',
-        marginTop: '1rem'
+        marginTop: '2rem',
+        fontSize: '1rem'
     }
 }
