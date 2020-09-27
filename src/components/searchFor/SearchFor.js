@@ -5,7 +5,7 @@ function SearchFor(props) {
     const hasValue = props.hasValue;
     if(hasValue !== ''){
         return(
-            <h1 style={styles.searchFor}>Displaying Recent News About {props.searchFor}</h1>
+            <h1 style={styles.searchFor}>{props.display} {props.searchFor}</h1>
         )
     }
     else{
