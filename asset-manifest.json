@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/keithoneill/youropinion/static/css/main.1a67da09.chunk.css",
+    "main.js": "/keithoneill/youropinion/static/js/main.b7251f92.chunk.js",
+    "main.js.map": "/keithoneill/youropinion/static/js/main.b7251f92.chunk.js.map",
+    "runtime-main.js": "/keithoneill/youropinion/static/js/runtime-main.709af2e9.js",
+    "runtime-main.js.map": "/keithoneill/youropinion/static/js/runtime-main.709af2e9.js.map",
+    "static/js/2.58b1081d.chunk.js": "/keithoneill/youropinion/static/js/2.58b1081d.chunk.js",
+    "static/js/2.58b1081d.chunk.js.map": "/keithoneill/youropinion/static/js/2.58b1081d.chunk.js.map",
+    "index.html": "/keithoneill/youropinion/index.html",
+    "precache-manifest.34a8ed8789708c11f942a307a89dc3a1.js": "/keithoneill/youropinion/precache-manifest.34a8ed8789708c11f942a307a89dc3a1.js",
+    "service-worker.js": "/keithoneill/youropinion/service-worker.js",
+    "static/css/main.1a67da09.chunk.css.map": "/keithoneill/youropinion/static/css/main.1a67da09.chunk.css.map",
+    "static/js/2.58b1081d.chunk.js.LICENSE.txt": "/keithoneill/youropinion/static/js/2.58b1081d.chunk.js.LICENSE.txt",
+    "static/media/logo192.png": "/keithoneill/youropinion/static/media/logo192.e26dec28.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.709af2e9.js",
+    "static/js/2.58b1081d.chunk.js",
+    "static/css/main.1a67da09.chunk.css",
+    "static/js/main.b7251f92.chunk.js"
+  ]
+}
