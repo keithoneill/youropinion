@@ -10,7 +10,7 @@ function NewsSource(props){
             <Card.Body>
                 <Card.Title>{props.source}</Card.Title>
                 <Card.Text>
-                Leaning: 
+                Leaning:
                 {props.bias}
                 </Card.Text>
                 <Card.Text>
@@ -20,9 +20,7 @@ function NewsSource(props){
                 <Button variant="secondary" a href={props.url}target="_blank">Visit News Site</Button>
             </Card.Body>
             <footer className="blockquote-footer">
-                <small className="text-muted">
-                <cite title="Based on data from Media Bias Fact Check" a href={props.biasurl}target="_blank">{props.biasurl}</cite>
-                </small>
+                <Button variant="dark" a href={props.biasurl}target="_blank">Visit Bias Rating Site</Button>
             </footer>
         </Card>
         
